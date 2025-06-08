@@ -47,10 +47,62 @@ const sample_projects = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
+    setupCursorSpotlight();
+    loadLogosStrip();
     loadProjects();
     setupCategoryFilters();
     observeElements();
 });
+
+function setupCursorSpotlight() {
+    const spotlight = document.querySelector('.cursor_spotlight');
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    function animate() {
+        currentX += (mouseX - currentX) * 0.1;
+        currentY += (mouseY - currentY) * 0.1;
+        
+        spotlight.style.left = currentX + 'px';
+        spotlight.style.top = currentY + 'px';
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+function loadLogosStrip() {
+    const logos = [
+        'python', 'tensorflow', 'pytorch', 'aws', 'azure', 'gcp',
+        'docker', 'kubernetes', 'react', 'nodejs', 'mongodb', 'postgresql',
+        'redis', 'kafka', 'spark', 'hadoop', 'tableau', 'powerbi',
+        'git', 'jenkins', 'elasticsearch', 'grafana', 'jupyter', 'vscode'
+    ];
+    
+    const track = document.querySelector('.logos_track');
+    if (!track) return;
+    
+    const logoElements = logos.map(logo => {
+        const item = document.createElement('div');
+        item.className = 'logo_item';
+        item.innerHTML = `
+            <img src="assets/logos/${logo}.png" alt="${logo}">
+            <span class="logo_tooltip">${logo}</span>
+        `;
+        return item;
+    });
+    
+    track.append(...logoElements);
+    track.append(...logoElements.map(el => el.cloneNode(true)));
+}
 
 function loadProjects() {
     const container = document.querySelector('.projects_container');

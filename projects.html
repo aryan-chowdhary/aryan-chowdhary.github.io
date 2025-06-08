@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav_links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about_me">About</a></li>
+            <li><a href="/projects" class="active">Projects</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Contact</a>
+                <div class="dropdown_content">
+                    <a href="mailto:your.email@example.com">Email ID</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="cursor_spotlight"></div>
+
+    <section class="projects_page_hero">
+        <h1>Projects Portfolio</h1>
+        <p class="projects_count"><span id="project_count">0</span> projects found.</p>
+    </section>
+
+    <section id="proj_categories" class="categories-section">
+        <h2 class="section_title">Categories</h2>
+        <div class="cat_grid">
+            <div class="category_card" data-cat="all">
+                <img src="assets/all.png" alt="All" class="cat_icon">
+                <div class="card_inner">
+                    <h3>All Projects</h3>
+                    <p>View complete portfolio</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="vc">
+                <img src="assets/vc.png" alt="Venture Capital" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Venture Capital</h3>
+                    <p>ML-powered startup valuation models</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="pf">
+                <img src="assets/pf.png" alt="Personal Finance" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Personal Finance</h3>
+                    <p>AI-driven financial planning tools</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="ip">
+                <img src="assets/ip.png" alt="Intellectual Property" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Intellectual Property</h3>
+                    <p>Blockchain-based IP protection systems</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="credit">
+                <img src="assets/credit.png" alt="Credit Systems" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Credit Systems</h3>
+                    <p>Advanced credit scoring algorithms</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="risk">
+                <img src="assets/risk.png" alt="Risk Management" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Risk Management</h3>
+                    <p>Quantum computing risk models</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="ib">
+                <img src="assets/ib.png" alt="Investment Banking" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Investment Banking</h3>
+                    <p>High-frequency trading systems</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="am">
+                <img src="assets/am.png" alt="Asset Management" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Asset Management</h3>
+                    <p>Portfolio optimization engines</p>
+                </div>
+            </div>
+            <div class="category_card" data-cat="trading">
+                <img src="assets/trading.png" alt="Trading & Investing" class="cat_icon">
+                <div class="card_inner">
+                    <h3>Trading & Investing</h3>
+                    <p>Algorithmic trading strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proj_showcase" class="projects-section">
+        <h2 class="section_title">All Projects</h2>
+        <div class="projects_container">
+        </div>
+    </section>
+
+    <footer class="footer_section">
+        <div class="watermark_container">
+            <img src="assets/images/watermark.png" alt="signature" class="watermark_img">
+        </div>
+    </footer>
+
+    <script src="js/projects.js"></script>
+</body>
+</html>
