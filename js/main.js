@@ -49,13 +49,38 @@ const sample_projects = [
 document.addEventListener('DOMContentLoaded', function() {
     setupCursorSpotlight();
     loadLogosStrip();
-    loadProjects();
-    setupCategoryFilters();
     observeElements();
+    checkForImages();
 });
+
+function checkForImages() {
+    const imgCheck = new Image();
+    imgCheck.onload = function() {
+        document.querySelector('.hero-container').classList.add('with-bg');
+    };
+    imgCheck.src = 'assets/images/background_animation.gif';
+    
+    const sections = [
+        { selector: '.about-section', image: 'gif1.gif' },
+        { selector: '.interests-skills-section', image: 'gif2.gif' }
+    ];
+    
+    sections.forEach(section => {
+        const el = document.querySelector(section.selector);
+        if (el) {
+            const img = new Image();
+            img.onload = function() {
+                el.classList.add('with-bg');
+            };
+            img.src = `assets/images/${section.image}`;
+        }
+    });
+}
 
 function setupCursorSpotlight() {
     const spotlight = document.querySelector('.cursor_spotlight');
+    if (!spotlight) return;
+    
     let mouseX = 0;
     let mouseY = 0;
     let currentX = 0;
@@ -102,92 +127,6 @@ function loadLogosStrip() {
     
     track.append(...logoElements);
     track.append(...logoElements.map(el => el.cloneNode(true)));
-}
-
-function loadProjects() {
-    const container = document.querySelector('.projects_container');
-    
-    proj_data = sample_projects;
-    
-    displayProjects(proj_data);
-}
-
-function displayProjects(projects) {
-    const container = document.querySelector('.projects_container');
-    container.innerHTML = '';
-    
-    projects.forEach((proj, idx) => {
-        const projectCard = createProjectCard(proj, idx);
-        container.appendChild(projectCard);
-    });
-}
-
-function createProjectCard(project, index) {
-    const card = document.createElement('div');
-    card.className = 'project_card';
-    card.style.animationDelay = `${index * 0.1}s`;
-    
-    const techBadges = project.tech.map(t => 
-        `<span class="tech_badge">${t}</span>`
-    ).join('');
-    
-    card.innerHTML = `
-        <div class="proj_content">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="tech_stack">
-                ${techBadges}
-            </div>
-            <a href="${project.link}" class="proj_link">View Project →</a>
-        </div>
-    `;
-    
-    card.style.cssText = `
-        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 20px;
-        padding: 30px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        animation: fadeInUp 0.6s ease-out forwards;
-        opacity: 0;
-    `;
-    
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
-        this.style.boxShadow = '0 20px 40px rgba(255,255,255,0.1)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = 'none';
-    });
-    
-    return card;
-}
-
-function setupCategoryFilters() {
-    const categoryCards = document.querySelectorAll('.category_card');
-    
-    categoryCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const category = this.dataset.cat;
-            
-            if (currentFilter === category) {
-                currentFilter = null;
-                displayProjects(proj_data);
-            } else {
-                currentFilter = category;
-                const filtered = proj_data.filter(p => p.category === category);
-                displayProjects(filtered);
-            }
-            
-            categoryCards.forEach(c => c.classList.remove('active'));
-            if (currentFilter) {
-                this.classList.add('active');
-            }
-        });
-    });
 }
 
 function observeElements() {

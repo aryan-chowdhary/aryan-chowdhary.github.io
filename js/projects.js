@@ -88,7 +88,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCategoryFilters();
     observeElements();
     updateProjectCount();
+    checkForImages();
 });
+
+function checkForImages() {
+    const sections = [
+        { selector: '.projects_page_hero', image: 'gif3.gif' },
+        { selector: '.projects-section', image: 'gif4.gif' }
+    ];
+    
+    sections.forEach(section => {
+        const el = document.querySelector(section.selector);
+        if (el) {
+            const img = new Image();
+            img.onload = function() {
+                el.classList.add('with-bg');
+            };
+            img.src = `assets/images/${section.image}`;
+        }
+    });
+}
 
 function setupCursorSpotlight() {
     const spotlight = document.querySelector('.cursor_spotlight');

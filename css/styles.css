@@ -1,6 +1,10 @@
 .about-section {
     padding: 100px 20px;
     position: relative;
+    background: #0f0f0f;
+}
+
+.about-section.with-bg {
     background: url('../assets/images/gif1.gif') center/cover no-repeat fixed;
 }
 
@@ -11,7 +15,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.75);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.9) 0%, rgba(15, 15, 15, 0.9) 100%);
+    z-index: 1;
 }
 
 .abt_content {
@@ -119,6 +124,10 @@
 .interests-skills-section {
     padding: 100px 20px;
     position: relative;
+    background: #0a0a0a;
+}
+
+.interests-skills-section.with-bg {
     background: url('../assets/images/gif2.gif') center/cover no-repeat fixed;
 }
 
@@ -129,7 +138,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.75);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+    z-index: 1;
 }
 
 .section_container {
@@ -289,6 +299,11 @@
     object-fit: contain;
     margin-bottom: 20px;
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    display: none;
+}
+
+.cat_icon[src*=".png"] {
+    display: block;
 }
 
 .category_card::before {
@@ -483,6 +498,10 @@
     padding: 150px 20px 80px;
     text-align: center;
     position: relative;
+    background: #0f0f0f;
+}
+
+.projects_page_hero.with-bg {
     background: url('../assets/images/gif3.gif') center/cover no-repeat fixed;
 }
 
@@ -493,7 +512,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.75);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.9) 100%);
+    z-index: 1;
 }
 
 .projects_page_hero h1 {
@@ -517,8 +537,13 @@
 }
 
 .projects-section {
-    background: url('../assets/images/gif4.gif') center/cover no-repeat fixed;
+    padding: 100px 0;
+    background: #0a0a0a;
     position: relative;
+}
+
+.projects-section.with-bg {
+    background: url('../assets/images/gif4.gif') center/cover no-repeat fixed;
 }
 
 .projects-section::before {
@@ -528,7 +553,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.75);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+    z-index: 1;
 }
 
 .projects-section .section_title,
@@ -592,7 +618,7 @@ body {
     color: #e0e0e0;
     overflow-x: hidden;
     line-height: 1.6;
-    cursor: none;
+    cursor: default;
 }
 
 html {
@@ -608,6 +634,7 @@ html {
     z-index: 1000;
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .nav_links {
@@ -676,9 +703,13 @@ html {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: url('../assets/images/background_animation.gif') center/cover no-repeat;
+    background: #0a0a0a;
     overflow: hidden;
     padding-top: 80px;
+}
+
+.hero-container.with-bg {
+    background: url('../assets/images/background_animation.gif') center/cover no-repeat;
 }
 
 .hero-container::before {
@@ -688,7 +719,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 10, 0.75);
+    background: radial-gradient(ellipse at bottom, #1a1a2e 0%, #0a0a0a 100%);
     z-index: 1;
 }
 
