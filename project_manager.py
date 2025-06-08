@@ -177,7 +177,7 @@ class ProjectManager:
             
             web_data.append(web_proj)
         
-        with open('projects/web-projects.js', 'w') as f:
+        with open('js/projects-data.js', 'w') as f:
             f.write(f"const projectData = {json.dumps(web_data, indent=2)};")
         
         print(f"Exported {len(web_data)} projects for web")
