@@ -1,0 +1,13 @@
+ {
+  "id": 1,                       
+  "title": "Project Name",       
+  "category": "vc",              
+  "description": "...",          
+  "tech": ["Python", "AWS"],     
+  "link": "#",                   
+  "date_added": "2024-01-15",    
+  "metrics": {                   
+    "accuracy": "96.3%",
+    "latency": "<1ms"
+  }
+}
