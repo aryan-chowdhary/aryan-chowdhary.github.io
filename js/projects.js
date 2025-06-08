@@ -83,7 +83,6 @@ const sample_projects = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
-    setupCursorSpotlight();
     loadProjects();
     setupCategoryFilters();
     observeElements();
@@ -107,31 +106,6 @@ function checkForImages() {
             img.src = `assets/images/${section.image}`;
         }
     });
-}
-
-function setupCursorSpotlight() {
-    const spotlight = document.querySelector('.cursor_spotlight');
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    
-    function animate() {
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
-        
-        spotlight.style.left = currentX + 'px';
-        spotlight.style.top = currentY + 'px';
-        
-        requestAnimationFrame(animate);
-    }
-    
-    animate();
 }
 
 function loadProjects() {

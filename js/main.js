@@ -47,18 +47,23 @@ const sample_projects = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
-    setupCursorSpotlight();
     loadLogosStrip();
     observeElements();
     checkForImages();
 });
 
 function checkForImages() {
-    const imgCheck = new Image();
-    imgCheck.onload = function() {
-        document.querySelector('.hero-container').classList.add('with-bg');
-    };
-    imgCheck.src = 'assets/images/background_animation.gif';
+    const heroContainer = document.querySelector('.hero-container');
+    if (heroContainer) {
+        const imgCheck = new Image();
+        imgCheck.onload = function() {
+            heroContainer.classList.add('with-bg');
+        };
+        imgCheck.onerror = function() {
+            console.log('Background image not found');
+        };
+        imgCheck.src = 'assets/images/background_animation.gif';
+    }
     
     const sections = [
         { selector: '.about-section', image: 'gif1.gif' },
@@ -72,36 +77,12 @@ function checkForImages() {
             img.onload = function() {
                 el.classList.add('with-bg');
             };
+            img.onerror = function() {
+                console.log(`Image ${section.image} not found`);
+            };
             img.src = `assets/images/${section.image}`;
         }
     });
-}
-
-function setupCursorSpotlight() {
-    const spotlight = document.querySelector('.cursor_spotlight');
-    if (!spotlight) return;
-    
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    
-    function animate() {
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
-        
-        spotlight.style.left = currentX + 'px';
-        spotlight.style.top = currentY + 'px';
-        
-        requestAnimationFrame(animate);
-    }
-    
-    animate();
 }
 
 function loadLogosStrip() {
